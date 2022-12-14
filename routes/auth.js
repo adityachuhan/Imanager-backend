@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User')
@@ -7,13 +8,13 @@ const jwt = require('jsonwebtoken');
 const { findOne } = require('../models/User');
 const fetchuser = require('../midleware/fetchuser')
 
-const JWT_SECRET = "iamagood@boy";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 //ROUTE:1 Creating a user using:POST at '/api/auth/createuser'  and no login required
 router.post('/createuser', [
     body('email', 'Enter a valid E-mail').isEmail(),
     body('passward', 'Passward must be of atleast of 6 characters').isLength({ min: 6 }),
-    body('name', 'name must be of atleast of 5 characters').isLength({ min: 5 }),
+    body('name', 'name must be of atleast of 5 characters').isLength({ min: 4 }),
 ], async(req, res) => {
 
     try {
@@ -63,6 +64,7 @@ router.post('/login', [
                 return res.status(400).json({ errors: errors.array() });
             }
             let { passward, email } = req.body;
+
             let user = await User.findOne({ email: email })
             if (!user) {
                 return res.status(400).json({ error: "Please login with a correct credentials" })

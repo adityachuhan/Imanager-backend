@@ -5,20 +5,16 @@ const NotesSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users'
     },
-    title: {
+    work: {
         type: String,
         required: true
     },
-    description: {
+    state: {
         type: String,
-        required: true
+        default: "Not started"
     },
-    tags: {
-        type: String,
-        default: 'General'
-    },
-    date: { type: Date, default: Date.now },
+    date: { type: Date },
 });
 
-const Notes = mongoose.model('Notes', NotesSchema)
-module.exports = Notes;
+const Todo = mongoose.model('Todo', NotesSchema)
+module.exports = Todo;
