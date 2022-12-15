@@ -46,7 +46,7 @@ const Upload = multer({ storage });
 //ROUTE: Adding pdf or zip file to mongondb using gridfs to :POST at '/api/file/addfile'  login required
 const fetchuser2 = require('../midleware/fetchuserfromurl')
 router.post(('/addfile/:token'), fetchuser2, Upload.single('file'), (req, res) => {
-    res.redirect('https://imanager.onrender.com/Notes-files')
+    res.redirect('https://imanager.onrender.com/')
 })
 
 
