@@ -8,7 +8,7 @@ const express = require('express');
 const router = express.Router();
 const ObjectID = require('mongodb').ObjectId;
 // mongo URI
-const mongoURI = "mongodb://localhost:27017/i-manager";
+const mongoURI = process.env.MONGOURI;
 // CREATE mongo connection 
 const conection = mongoose.createConnection(mongoURI);
 let gfs;
