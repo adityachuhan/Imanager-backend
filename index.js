@@ -16,5 +16,5 @@ app.use('/api/diary', require('./routes/diary'))
 app.use('/api/file', require('./models/File'))
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Api listening on port ${port}`)
 })
