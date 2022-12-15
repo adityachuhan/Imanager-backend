@@ -13,7 +13,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/todo'))
 app.use('/api/diary', require('./routes/diary'))
-app.use('/api/file', require('./models/file'))
+app.use('/api/file', require('./models/File'))
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
