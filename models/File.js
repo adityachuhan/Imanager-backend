@@ -54,9 +54,7 @@ router.post(('/addfile/:token'), fetchuser2, Upload.single('file'), (req, res) =
 router.get(('/filesinfo'), fetchuser, (req, res) => {
     gfs.files.find({ metadata: req.user.id }).toArray((err, files) => {
         if (!files || files.length === 0) {
-            return res.status(404).json({
-                err: "files don't exist"
-            });
+            return res.json([]);
         }
         return res.json(files);
     })
