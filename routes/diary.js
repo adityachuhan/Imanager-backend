@@ -5,9 +5,7 @@ const Diary = require('../models/Diary')
 const { body, validationResult } = require('express-validator');
 
 // Adding the diary note to the database at post at '/api/diary/addDiary' (login required)
-router.post('/addDiary', fetchuser, [
-    body('DiaryNote', 'must be of atleast of 30 characters').isLength({ min: 30 }),
-], async(req, res) => {
+router.post('/addDiary', fetchuser, async(req, res) => {
 
     try {
         const { diaryNote } = req.body;
@@ -25,15 +23,10 @@ router.post('/addDiary', fetchuser, [
 })
 
 // updating the diary note to the database at post at '/api/diary/updateDiary/:id' (login required)
-router.put('/updateDiary/:id', fetchuser, [
-        body('diaryNote', 'must be of atleast of 30 characters').isLength({ min: 30 }),
-    ], async(req, res) => {
+router.put('/updateDiary/:id', fetchuser, async(req, res) => {
 
         try {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(400).json({ errors: errors.array() });
-            }
+
 
             const userid = req.user.id;
             const savedNote = await Diary.findById(req.params.id);
