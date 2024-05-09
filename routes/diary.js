@@ -45,6 +45,7 @@ router.put('/updateDiary/:id', fetchuser, async(req, res) => {
             res.status(200).send(updatedNote);
 
         } catch (error) {
+            res.send(error.message)
             res.status(500).send("Internal Servor error");
             console.log(error.message);
         }
