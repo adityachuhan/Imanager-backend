@@ -18,6 +18,7 @@ router.post('/addDiary', fetchuser, async(req, res) => {
         res.send(savediarynote);
 
     } catch (error) {
+        res.send(error.message)
         res.status(500).send("Internal Servor error");
         console.log(error.message);
     }
