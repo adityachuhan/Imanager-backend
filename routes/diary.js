@@ -13,7 +13,7 @@ router.post('/addDiary', fetchuser, async(req, res) => {
             diaryNote,
             user: req.user.id
         })
-        res.status(500).send("fine");
+       
         const savediarynote = await daryNote.save()
         res.send(savediarynote);
 
