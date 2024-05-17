@@ -78,7 +78,8 @@ router.delete("/filedelete/:id", fetchuser, (req, res) => {
     gridfsBucket = new mongoose.mongo.GridFSBucket(conection.db, {
         bucketName: 'Notes'
     })
-    gridfsBucket.delete(ObjectID(req.params.id));
     res.status(200)
+    gridfsBucket.delete(ObjectID(req.params.id));
+    
 });
 module.exports = router;
